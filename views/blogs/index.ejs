@@ -8,9 +8,13 @@
 </head>
 <body>
   <%- include('../layout') %>
-  <h1><%= data %></h1>
+  
+  <div class="py-2">
+  <a href="/blogs/add" class="btn btn-primary">เขียนบทความ</a>
+  </div>
+  
   <hr>
-  <h1>ข้อมูลบทความทั้งหมด</h1>
+  <h2><%= data %></h2>
   <hr>
   <p>by chatuphat</p>
 </body>
