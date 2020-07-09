@@ -27,3 +27,6 @@ const blogSchema = new Schema({
 
 })
 const Blogs=module.exports=mongoose.model("blogs",blogSchema)
+module.exports.createBlog=function(newBlogs,callback){
+  newBlogs.save(callback)
+}
