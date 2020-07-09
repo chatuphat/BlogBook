@@ -14,8 +14,20 @@
   </div>
   
   <hr>
-  <h2><%= data %></h2>
+  <h3><%= data %></h3>
   <hr>
-  <p>by chatuphat</p>
+  <p>
+    <% Object.values(blogs).forEach(function(blog){%>
+    <h4><b>บทความ: </b><%= blog.title %></h4>
+     <p><b>ผู้เขียน: </b><%= blog.author %></p>
+     <p><b>หมวดหมู่: </b><%= blog.category %></p>
+     <a href="">เเก้ไข</a>
+     <a href="">ลบ</a>
+     <hr>
+  <% }) %>
+  
+  
+  
+  </p>
 </body>
 </html>

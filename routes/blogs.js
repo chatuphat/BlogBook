@@ -3,7 +3,10 @@ var router = express.Router();
 const Blogs = require('../models/blogs')
 
 router.get('/', function (req, res, next) {
-  res.render("blogs/index", { data: "ข้อมูลบทความ" });
+  Blogs.getAllBlogs(function (err, blogs) {
+    if (err) throw err
+    res.render("blogs/index", { data: "ข้อมูลบทความ" ,blogs:blogs});
+  })
 });
 
 router.get('/add', function (req, res, next) {
@@ -15,9 +18,9 @@ router.post('/add', function (req, res, next) {
     author: req.body.author,
     category: req.body.category
   })
-  Blogs.createBlog(data,function(err){
-    if(err) console.log(err);
-    res.redirect("/")
+  Blogs.createBlog(data, function (err) {
+    if (err) console.log(err);
+    res.redirect("/blogs")
   })
 });
 
