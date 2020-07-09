@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const Blogs=require('../models/blogs')
 
 router.get('/', function(req, res, next) {
   res.render("blogs/index",{data:"ข้อมูลบทความ"});
