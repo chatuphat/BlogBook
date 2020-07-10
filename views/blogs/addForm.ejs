@@ -16,6 +16,13 @@
 
   <hr>
   <h2><%= data %></h2>
+  <% if (locals.errors) { %>
+  <ul class="alert alert-danger">
+    <% Object.values(errors).forEach(function(error){ %>
+    <li class="mx-3"><%= error.msg %></li>
+    <% }); %>
+  </ul>
+  <% } %>
   <form action="/blogs/add" method="POST">
     <div class="form-groug">
       <label for="">ชื่อบทความ</label>
@@ -33,9 +40,9 @@
           <option value="สารคดี">สารคดี</option>
         </select>
       </div>
-     </div>
+    </div>
     </br>
-      <input type="submit" class="btn btn-primary" name="" id="" value="บันทึก">
+    <input type="submit" class="btn btn-primary" name="" id="" value="บันทึก">
   </form>
 
 </body>
