@@ -17,4 +17,4 @@ npm start
 
 ![add](https://github.com/chatuphat/BlogBook/blob/master/DocumentProject/IMG/add.JPG)
 
-![add2](https://github.com/chatuphat/BlogBook/blob/master/DocumentProject/IMG/add.JPG)
+![add2](https://github.com/chatuphat/BlogBook/blob/master/DocumentProject/IMG/add2.JPG)
