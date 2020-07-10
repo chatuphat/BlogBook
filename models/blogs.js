@@ -38,3 +38,10 @@ module.exports.getAllBlogs=function(data){
 module.exports.deleteBlog=function(id,callback){
   Blogs.findByIdAndDelete(id,callback)
 }
+
+module.exports.getBlogId=function(id,callback){
+  var query={
+    _id:id
+  }
+  Blogs.findOne(query,callback)
+}

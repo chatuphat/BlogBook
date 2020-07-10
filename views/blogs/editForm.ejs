@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <%- include('../layout') %>
+  <div class="py-2">
+    <a href="/" class="btn btn-success">กลับหน้าเเรก</a>
+  </div>
+
+  <hr>
+  <h2><%= data %></h2>
+  <% if (locals.errors) { %>
+  <ul class="alert alert-danger">
+    <% Object.values(errors).forEach(function(error){ %>
+    <li class="mx-3"><%= error.msg %></li>
+    <% }); %>
+  </ul>
+  <% } %>
+  <form action="/blogs/add" method="POST">
+    <div class="form-groug">
+      <label for="">ชื่อบทความ</label>
+      <input type="text" name="title" class="form-control" value="<%=blog.title %>">
+    </div>
+    <div class="form-groug">
+      <label for="">ผู้เขียน</label>
+      <input type="text" name="author" class="form-control" value="<%=blog.author %>">
+
+
+      <div class="form-groug">
+        <label for="">หมวดหมู่</label>
+        <select name="category" id="" class="form-control">
+          <option value="นิยาย"
+          <% if (blog.category=="นิยาย") { %>
+                 selected
+          <% } %>
+          >นิยาย</option>
+          <option value="สารคดี"
+          <% if (blog.category=="สารคดี") { %>
+            selected 
+          <% } %>
+          >สารคดี</option>
+        </select>
+        <input type="hidden" value="<%= blog._id %>">
+      </div>
+    </div>
+    </br>
+    <input type="submit" class="btn btn-primary" name="" id="" value="อัพเดท">
+  </form>
+
+</body>
+
+</html>

@@ -20,6 +20,13 @@ router.get('/delete/:id', function (req, res, next) {
     res.redirect("/blogs")
   })
 });
+
+router.get('/edit/:id', function (req, res, next) {
+   Blogs.getBlogId([req.params.id],function(err,blog){
+     if(err) throw err
+     res.render("blogs/editForm", {data: "เเก้ไขบทความ",blog:blog});
+   })
+});
 router.post('/add', [
   check('title', 'กรุณาป้อนชื่อบทความ').not().isEmpty(),
   check('author', 'กรุณาป้อนชื่อผู้เขียน').not().isEmpty()
