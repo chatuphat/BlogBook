@@ -23,7 +23,7 @@
     <% }); %>
   </ul>
   <% } %>
-  <form action="/blogs/add" method="POST">
+  <form action="/blogs/update" method="POST">
     <div class="form-groug">
       <label for="">ชื่อบทความ</label>
       <input type="text" name="title" class="form-control" value="<%=blog.title %>">
@@ -47,7 +47,7 @@
           <% } %>
           >สารคดี</option>
         </select>
-        <input type="hidden" value="<%= blog._id %>">
+        <input type="hidden" value="<%= blog._id %>" name="id">
       </div>
     </div>
     </br>

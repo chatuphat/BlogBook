@@ -53,4 +53,31 @@ router.post('/add', [
   })
 });
 
+router.post('/update', [
+  check('title', 'กรุณาป้อนชื่อบทความ').not().isEmpty(),
+  check('author', 'กรุณาป้อนชื่อผู้เขียน').not().isEmpty()
+], function (req, res, next) {
+  const result = validationResult(req);
+  var errors = result.errors;
+  for (var key in errors) {
+    console.log(errors[key].value);
+  }
+  if (!result.isEmpty()) {
+    //กรณีป้อนไม่ครบ
+    res.rendirect("/blogs");
+  }else{
+    data = new Blogs({
+      id:req.body.id,
+      title: req.body.title,
+      author: req.body.author,
+      category: req.body.category
+    })
+  }
+  
+  Blogs.updateBlog(data, function (err) {
+    if (err) console.log(err);
+    res.redirect("/blogs")
+  })
+});
+
 module.exports = router;

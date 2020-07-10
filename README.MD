@@ -1,1 +1,14 @@
-# Web Development with Nodejs, MongoDB & Mongoose (Full Course) on Youtube:Kong ruksiam
+# Web Development with Nodejs, MongoDB & Mongoose
+
+### Project setup
+
+```
+npm install
+```
+
+### Project start
+
+```
+npm start
+```
+

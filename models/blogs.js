@@ -1,47 +1,62 @@
-const mongoose=require('mongoose')
-const mongo=require('mongodb')
-const dburl='mongodb://localhost:27017/BlogDB'
+const mongoose = require('mongoose')
+const mongo = require('mongodb')
+const dburl = 'mongodb://localhost:27017/BlogDB'
 
-mongoose.connect(dburl,{
-  useNewUrlParser:true
+mongoose.connect(dburl, {
+  useNewUrlParser: true
 })
-const db=mongoose.connection
-const Schema=mongoose.Schema
+const db = mongoose.connection
+const Schema = mongoose.Schema
 
 const blogSchema = new Schema({
   id: {
-    type:Schema.ObjectId
+    type: Schema.ObjectId
   },
-  title:{
-    type:String,
-    required:true
+  title: {
+    type: String,
+    required: true
   },
   author: {
-    type:String,
-    required:true
+    type: String,
+    required: true
   },
-  category:{
-    type:String,
-    required:true
+  category: {
+    type: String,
+    required: true
   }
 
 })
-const Blogs=module.exports=mongoose.model("blogs",blogSchema)
-module.exports.createBlog=function(newBlogs,callback){
+const Blogs = module.exports = mongoose.model("blogs", blogSchema)
+module.exports.createBlog = function (newBlogs, callback) {
   newBlogs.save(callback)
 }
 
-module.exports.getAllBlogs=function(data){
+module.exports.getAllBlogs = function (data) {
   Blogs.find(data)
 }
 
-module.exports.deleteBlog=function(id,callback){
-  Blogs.findByIdAndDelete(id,callback)
+module.exports.deleteBlog = function (id, callback) {
+  Blogs.findByIdAndDelete(id, callback)
 }
 
-module.exports.getBlogId=function(id,callback){
-  var query={
-    _id:id
+module.exports.getBlogId = function (id, callback) {
+  var query = {
+    _id: id
   }
-  Blogs.findOne(query,callback)
+  Blogs.findOne(query, callback)
 }
+
+module.exports.updateBlog = function (data, callback) {
+  var query = {
+    _id: data.id
+  }
+
+  Blogs.findByIdAndUpdate(query, {
+    $set: {
+      title: data.title,
+      author: data.author,
+      category: data.category
+    }
+  },{ new: true }, callback)
+}
+
