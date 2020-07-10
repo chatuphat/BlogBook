@@ -13,6 +13,13 @@ router.get('/', function (req, res, next) {
 router.get('/add', function (req, res, next) {
   res.render("blogs/addForm", { data: "เพิ่มบทความ" });
 });
+
+router.get('/delete/:id', function (req, res, next) {
+  Blogs.deleteBlog([req.params.id],function(err){
+    if(err) throw err
+    res.redirect("/blogs")
+  })
+});
 router.post('/add', [
   check('title', 'กรุณาป้อนชื่อบทความ').not().isEmpty(),
   check('author', 'กรุณาป้อนชื่อผู้เขียน').not().isEmpty()

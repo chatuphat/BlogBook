@@ -34,3 +34,7 @@ module.exports.createBlog=function(newBlogs,callback){
 module.exports.getAllBlogs=function(data){
   Blogs.find(data)
 }
+
+module.exports.deleteBlog=function(id,callback){
+  Blogs.findByIdAndDelete(id,callback)
+}
